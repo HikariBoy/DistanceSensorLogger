@@ -17,7 +17,7 @@ The GEFRAN PY2F10 rectilinear Displacement sensor is shown in Fgiure 3 along wit
 
 ## Circuit Configuration
 The Schematic for the setup is shown below - the EAGLECAD layout is in the repository [TBD].
-<img src="SchematicLayout.png" alt="Figure 1. Schematic of the Arduino (Uno) interface to the GEFRAN PY2 distance sensor through the 16Bit ADC" align="left"  width="400"/>  <P></P>
+<img src="SchematicLayout.PNG" alt="Figure 1. Schematic of the Arduino (Uno) interface to the GEFRAN PY2 distance sensor through the 16Bit ADC" align="left"  width="400"/>  <P></P>
 The use of the ADS1115S is important for 2 reasons:
 1) the ADS1115S contains an internal, high precision, temperature stabilized voltage reference.  thsi is essential when needing to take accurate measurements. Just as important is a stabile voltage supply for the sensor (as discussed above) when I decided to used the 3.3V reference from the Arduino board.
 2) the 16 bit resolution and high 820 samples-per-sec specifications of this ADC make it considerabilty better than using the 10-bit Arduino ADC, or even and oversampled Arduino ADC which has been shown to be capable of an [equivalent of 16-bits, but at a much slower samples-per-seconds](https://www.electricrcaircraftguy.com/2014/05/using-arduino-unos-built-in-16-bit-adc.html).
