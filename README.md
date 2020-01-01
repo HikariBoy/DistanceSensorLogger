@@ -8,26 +8,28 @@ This project uses a [GEFRAN PY2F10S](https://www.gefran.com/en/in/products/73-py
 4) internal averaging on the measured distance data
 
 ## Physical Configuration
-<div style="float: right">
+<div style="float: left">
     <img src="AssembledClosedBox.png" alt="Figure 1. Closed box showing USB input and GEFRAN PY2 distance sensor" align="left"  width="400"/>  
 	<figcaption>Figure 1. Closed box showing USB input and GEFRAN PY2 distance sensor</figcaption>
 </div>
-The assembled box with the  GEFRAN PY2 distance sensor is shown in Figure 1.  the entire package is fairly small, with all components fitting within the [110&#215;60&#215;30 Aluminium Box](https://www.jaycar.com.au/economy-die-cast-aluminum-boxes-111-x-60-x-30mm/p/HB5062).  However to push the USB connector close to the side panel of the box, it was necessary to remove the PCB power connector on the Arduino (See Figure 2b) 
-<figure>
+The assembled box with the  GEFRAN PY2 distance sensor is shown in Figure 1.  the entire package is fairly small, with all components fitting within the 110&#215;60&#215;30 Aluminium Box  110x60x30 Aluminium [Box](https://www.jaycar.com.au/economy-die-cast-aluminum-boxes-111-x-60-x-30mm/p/HB5062) .  However to push the USB connector close to the side panel of the box, it was necessary to remove the PCB power connector on the Arduino (See Figure 2b) 
+<div style="float: right">
   <img src="AssembledOpenedBox.png" alt="Figure 2. Opened Box showing (a) main board, (b) expanded view showing heatsink on 5V regulator, removed power jack, replaced with wiring to the panel mounted 2.5 mm jack, sensor wiring (see Figure 3) and connector to PY2 sensor on the 16Bit ADC" align="left"  width="800"/> 
   <figcaption>Figure 2. Opened Box showing (a) main board, (b) expanded view showing heatsink on 5V regulator, removed power jack, replaced with wiring to the panel mounted 2.5 mm jack, sensor wiring (see Figure 3) and connector to PY2 sensor on the 16Bit ADC.</figcaption>
-</figure><P>
+</div>
 The internals of the box as shown in Figure 2, with the exploded image shown in Figure 2b.  Two (2)-stacked heatsinks are used (glued together with [thermal paste](https://www.jaycar.com.au/adhesive-heatsink-compound-5g-tube/p/NM2014)) to help dissipate the heat from the 5V regulator and to ensure the heatsinks come into intimate contact with the top metal lid of the box to further enhance the heat sinking.  The Arduino PCB power connector is removed to allow the USB connector to be nearer to the edge panel, and 2 flying leads (red & black) are used to connect to a [2.5mm panel mount](https://www.jaycar.com.au/2-5mm-bulkhead-male-dc-power-connector/p/PS0524) connector to the 12V DC external supply.
 
 The GEFRAN PY2F10 rectilinear Displacement sensor is shown in Figure 3 along with the corresponding color coded wiring.  Interestingly, GEFRAN call this a Rectilinear Displacement sensor, which is really just saying it measures  displacement in 1D.  Since displacement is a vector and distance a scalar, and the output of the sensor is a scalar quantity, I prefer to refer to this as a distance sensor for simplicity.  Others might argue over semantics.  The equivalent circuit is also shown in Figure 3, where the sensor acts as simply a continuous variable resistor.  Importantly, the start and end ranges are not valid and over about 1-1.5mm on each end, there is no valid output.  I have accounted for that in the firmware and reported out-of-range values in these ranges.
+<div style="float: left">
 <img src="./PY2.png" alt="Figure 3. GEFRAN PY2F10 Rectilinear Displacement sensor with color coded wiring to the Arduino  power rails and the ADS1115S ADC." align="left"  width="800"/>  <P></P>
 <figcaption>Figure 3. GEFRAN PY2F10 rectilinear Displacement sensor with color coded wiring to the Arduino  power rails and the ADS1115S ADC<figcaption>
-
+</div>
 ## Circuit Configuration
 The Schematic for the setup is shown below - the EAGLECAD layout is in the repository as [GEFRAN_DistanceSensor.sch], created using [EAGLECAD](https://www.autodesk.com/products/eagle/overview).
+<div style="float: right">
 <img src="./SchematicLayout.PNG" alt="Figure 4. Schematic of the Arduino (Uno) interface to the GEFRAN PY2 distance sensor through the 16Bit ADC" align="left"  width="400"/>  <P></P>
 <figcaption>Figure 4. Schematic of the Arduino (Uno) interface to the GEFRAN PY2 distance sensor through the 16Bit ADC<figcaption><P>
-
+</div>
 The use of the ADS1115S is important for 2 reasons:
 1) the ADS1115S contains an internal, high precision, temperature stabilized voltage reference.  This is essential when needing to take accurate measurements. Just as important is a stable voltage supply for the sensor (as discussed above) when I decided to use the 3.3V reference from the Arduino board.
 2) the 16 bit resolution and high 820 samples-per-sec specifications of this ADC make it considerably better than using the 10-bit Arduino ADC, or even and oversampled Arduino ADC which has been shown to be capable of an [ equivalent of 16 bits but at a much slower samples per seconds](https://www.electricrcaircraftguy.com/2014/05/using-Arduino-unos-built-in-16-bit-adc.html) . The Arduino UNO fits within the small metal box (Figure 2) with a square cut out one side for the USB and a power and lead for the PY2F10S distance sensor.  
