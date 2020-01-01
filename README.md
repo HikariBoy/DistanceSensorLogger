@@ -40,8 +40,10 @@ The code [distanceSensor.ino](distanceSensor.ino) is a basic interface for testi
 ## Testing
 Initial testing indicated the output was reasonabily linear and a calibration factor was determined to be 0.577260406 &#181;m/ADC_Value giving the ReportedDistance = ADC_Channel_A0*0.577260406 &#181;m/ADC_Value.
 
-The Repeatability and Calibration Check data which follows can be found in the file (TestingData.xlsx).
-#Repeating zeroing.
+The Repeatability and Calibration Check data which follows can be found in the file [TestingData.xlsx].
+
+### Repeating zeroing
+
 The stage was bolted to the bench and the plunger stage of the PY2 sensor lifted repeatedly. Over this data is shown in Figure 5.
 <div style="float: right"><img src="./RepeatabilityCheck.PNG" align="right"  width="400"/> </div> <figcaption> <I><b>Figure 5:</b> Measured data during a repeatibility check of the return to zero value of this sensor </I><figcaption>
   <P></P>
@@ -50,7 +52,8 @@ When the movement region of PY2 sensor rode was only small (<2 mm) a check of th
 When the movement region of PY2 sensor rode was large (~10 mm) a check of the zero values indicated the average was -13.56 &#181;m and the standard deviaton of the data was 9.75 &#181;m.
 These results indicate that for small movement of the PY2 rod, the average repeatability was high even though the spread of the data was up to 5.26 &#181;m.  When large movements of the main rod occurs, there is significant drift in the zero and the spread in the data (the standard deviation) almost doubles.  This suggests that perhasp frictional losses due to large movements results in a shift in the absolute measurement value.  Never that less, over 10 mm movement, an average drift in the data of -13.56 &#181;m represents only a drift of 0.0014%.
 
-#Calibration.
+### Calibration
+
 A digital calliper was used as a reference measure and expected to be accurate to [20 &#181;m](https://www.jaycar.com.au/medias/sys_master/images/9318637535262/TD2082-manualMain.pdf) up to 10mm distance.  Overall the calibration needs to be repeated as the results are considered ectremely poor.  While the output appears vry linear, the standard deviation of the resisduals between the actual distance and the reported distance is around 180 &#181;m - the expected difference was in the or of 20-50 &#181;m, and hence a reach of thsi data is required to ensure the calibration was performed correctly.
 <div style="float: right"><img src="./CalibrationCheck.PNG" align="right"  width="400"/> </div> <figcaption> <I><b>Figure 6:</b> Measured data checking the reported (calibrated) output of the sensor against the digital caliper </I><figcaption>
   <P></P>
