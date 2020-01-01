@@ -1,14 +1,14 @@
 
-<style>
-  type="text/css"
-img + em { display: block; text-align: center;}
-</style>
+
 # Distance Sensor I/O (Rectilinear [1D] Displacement Sensor])
 ## INTRODUCTION:
 dskjdskd
 sdskjdksjdksd
 samed
-
+<style>
+  type="text/css"
+img + em { display: block; text-align: center;}
+</style>
 
 This is [Jekyll](https://jekyllrb.com)'s logo :
 
