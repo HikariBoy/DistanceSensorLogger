@@ -1,4 +1,3 @@
-
 # Distance Sensor I/O (Rectilinear [1D] Displacement Sensor])
 ## INTRODUCTION:
 This project uses a [GEFRAN PY2F10S](https://www.gefran.com/en/in/products/73-py2-touch-version-with-ball-tip) that I had available and connects to an Arduino and calibrates the stage.  Total travel range is ~10mm.  An initial attempt to interface directly to a PC powered Arduino using the internal 10-bit ADC resulted in extremely high noise having an RMS variation around 10microns.  It was due to 1) the noise in the PC 5V power rail, 2) the use of the same rail for the ADC reference voltage and 3) the limitations of a 10 bit ADC.  Subsequently, the current version uses:
@@ -6,6 +5,8 @@ This project uses a [GEFRAN PY2F10S](https://www.gefran.com/en/in/products/73-py
 2) powering the GEFRAN PY2F10S distance sensor using the 3.3 V rail rather than the 5 V rail.  Since the sensor is basically a variable 1kOhm potentiometer, this results in nominally 3.3mA through the sensors.  The recommended level is 0.1 mA but any value less than 10 mA is acceptable according to the data sheet.  Since the 3.3V rail is not loaded by any other components on the Arduino board (except maybe an LED) this ensures that the power supply od dedicated to run only this sensor and hence should supply a well regulated rail voltage.
 3) migration to a 16-bit ADC using the [ADS1115 16 Bit Converter Module](https://www.adafruit.com/product/1085).
 4) internal averaging on the measured distance data
+
+{% include image.html url="AssembledClosedBox.png" description="My cat, Robert Downey Jr." %}
 
 ## Physical Configuration
 <div style="float: right">
