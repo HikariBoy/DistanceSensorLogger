@@ -1,3 +1,4 @@
+
 # Distance Sensor I/O (Rectilinear [1D] Displacement Sensor])
 ## INTRODUCTION:
 This project uses a [GEFRAN PY2F10S](https://www.gefran.com/en/in/products/73-py2-touch-version-with-ball-tip) that I had available and connects to an arduino and calibrates the stage.  Total travel range is ~10mm.  An initial attempt to interface directly to a PC powered Arduino using the internal 10-bit ADC resulted in extremely high noise having an RMS variation around 10microns.  It was due to 1) the noise in the PC 5V power rail, 2) the use of the same rail for the ADC reference voltage and 3) the limitations of a 10 bit ADC.  Subsequently, the current version uses:
@@ -7,10 +8,21 @@ This project uses a [GEFRAN PY2F10S](https://www.gefran.com/en/in/products/73-py
 4) internal averaging on the measured distance data
 
 ## Physical Configuration
-The Schematic for the setup is shown below - the EAGLECAD layout is in the repository [TBD].
+<div style="float: right">
+    <img src="file://AssembledClosedBox.png" alt="Figure 1. Closed box showing USB input and GEFRAN PY2 distance sensor" align="left"  width="400"/>  
+</div>The Schematic for the setup is shown below - the EAGLECAD layout is in the repository [TBD].
 The assembled box withthe  GEFRAN PY2 distance sensor is shown in Figure 1.  the entire package is fairly small, with all components fitting within the [110x60x30 Aluminium Box](https://www.jaycar.com.au/economy-die-cast-aluminum-boxes-111-x-60-x-30mm/p/HB5062).  However to push the USB connector close to the side panel of the box, it was neccessary to remove the PCB power connector on the arduino (See Figure 2b) 
-<img src="file://AssembledClosedBox.png" alt="Figure 1. Closed box showing USB input and GEFRAN PY2 distance sensor" align="left"  width="400"/>  <P></P>
 The internals of the box as shown in Figure 2, with the exploded image shown in Figure 2b.  The 2-stacked heatsinks are used (glued together with thermal past) to help disapate th heat from the 5V regulator and to ensure the heatsinks come into intimate contact with the top metal lid of the box to further enhance the heat sinking.  The Arduino PCB power connector is removed to allow the USB connector to be nearee to the edge panel, and 2 flying leads (red & black) are used to connect to a [2.5mm panel mount](https://www.jaycar.com.au/2-5mm-bulkhead-male-dc-power-connector/p/PS0524) connector to the 12V DC external supply.
+
+
+
+![Some Title](file://AssembledClosedBox.png){:style="float: right;margin-right: 7px;margin-top: 7px;"}
+The assembled box withthe  GEFRAN PY2 distance sensor is shown in Figure 1.  the entire package is fairly small, with all components fitting within the [110x60x30 Aluminium Box](https://www.jaycar.com.au/economy-die-cast-aluminum-boxes-111-x-60-x-30mm/p/HB5062).  However to push the USB connector close to the side panel of the box, it was neccessary to remove the PCB power connector on the arduino (See Figure 2b) 
+The internals of the box as shown in Figure 2, with the exploded image shown in Figure 2b.  The 2-stacked heatsinks are used (glued together with thermal past) to help disapate th heat from the 5V regulator and to ensure the heatsinks come into intimate contact with the top metal lid of the box to further enhance the heat sinking.  The Arduino PCB power connector is removed to allow the USB connector to be nearee to the edge panel, and 2 flying leads (red & black) are used to connect to a [2.5mm panel mount](https://www.jaycar.com.au/2-5mm-bulkhead-male-dc-power-connector/p/PS0524) connector to the 12V DC external supply.
+<figure>
+  <img src="file://AssembledOpenedBox.png" alt="Figure 2. Opended Box showing (a) main board, (b) expanded view showing heatsink on 5V regulator, removed power jack, replaced with wiring to the panel mounted 2.5 mm jack, sensor wiring (see Figure 3) and connector to PY2 sensor on the 16Bit ADC" align="left"  width="800"/> 
+  <figcaption>This is my caption text.</figcaption>
+</figure>
 <img src="file://AssembledOpenedBox.png" alt="Figure 2. Opended Box showing (a) main board, (b) expanded view showing heatsink on 5V regulator, removed power jack, replaced with wiring to the panel mounted 2.5 mm jack, sensor wiring (see Figure 3) and connector to PY2 sensor on the 16Bit ADC" align="left"  width="800"/>  <P></P>
 The GEFRAN PY2F10 rectilinear Displacement sensor is shown in Fgiure 3 along with the correspodning color coded wiring.  Interestingly, GEFRAN call this a rectilinear Displacement sensor, which is really just saying it measures  displacement in 1D.  Since displacement is a vector and distance a scalar, and the output of the sensor is a scalar quantity, I prefer to refer to this as a distance sensor for simplicity.  Others might argue over semantics.  The equivalent circuit is also shown in Figure 3, where the sensor acts as simply a continuous variable resistor.  Importantly, the start and end ranges are not valid and over about 1-1.5mm on each end, there is no valid output.  I have accounded for that in the fireware and reported out-of-range values in these ranges.
 <img src="file://PY2.png" alt="Figure 3. GEFRAN PY2F10 rectilinear Displacement sensor with color coded wiring to the Arduino  power rails and the ADS1115S ADC." align="left"  width="800"/>  <P></P>
