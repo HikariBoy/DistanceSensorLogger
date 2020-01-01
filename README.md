@@ -1,5 +1,5 @@
 <style>
-  type="text/css">
+  type="text/css"
 img + em { display: block; text-align: center;}
 </style>
 # Distance Sensor I/O (Rectilinear [1D] Displacement Sensor])
