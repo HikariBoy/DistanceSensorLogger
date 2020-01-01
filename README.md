@@ -1,9 +1,24 @@
 <style>
-img + em { }
+  type="text/css">
+img + em { display: block; text-align: center;}
 </style>
 # Distance Sensor I/O (Rectilinear [1D] Displacement Sensor])
 ## INTRODUCTION:
+dskjdskd
+sdskjdksjdksd
+samed
 
+
+This is [Jekyll](https://jekyllrb.com)'s logo :
+
+{% include image.html
+    src="AssembledClosedBox.png" <!-- image filename (placed in /assets/images) -->
+    alt="Jekyll's logo" <!-- alt text -->
+    caption="This is Jekyll's logo, featuring Dr. Jekyll's serum!" <!-- Caption -->
+%}
+
+sameds
+data
 The GEFRAN PY2F10 rectilinear Displacement sensor is shown in Fgiure 3 along with the correspodning color coded wiring.  Interestingly, GEFRAN call this a rectilinear Displacement sensor, which is really just saying it measures  displacement in 1D.  Since displacement is a vector and distance a scalar, and the output of the sensor is a scalar quantity, I prefer to refer to this as a distance sensor for simplicity.  Others might argue over semantics.  The equivalent circuit is also shown in Figure 3, where the sensor acts as simply a continuous variable resistor.  Importantly, the start and end ranges are not valid and over about 1-1.5mm on each end, there is no valid output.  I have accounded for that in the fireware and reported out-of-range values in these ranges.
 <img src="./PY2.png" alt="Figure 3. GEFRAN PY2F10 rectilinear Displacement sensor with color coded wiring to the Arduino  power rails and the ADS1115S ADC." align="left"  width="800"/>  <P></P>
 *image_caption*
